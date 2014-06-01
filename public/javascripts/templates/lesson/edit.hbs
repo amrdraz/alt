@@ -1,0 +1,43 @@
+<h2>
+{{#link-to 'dashboard' class="btn glyphicon glyphicon-log-out refelect" }}
+{{/link-to}}
+{{#if editTitle}}
+	{{edit-label class="edit" value=title focus-out="togglEditTitle" insert-newline="togglEditTitle"}}
+{{else}}
+	<span {{action "togglEditTitle" on="doubleClick"}}>{{title}}</span>
+{{/if}}
+</h2>
+
+<div  class="panel panel-info well">
+    {{#if editDescription }}
+    <br class="clearfix">
+        {{view 'wysiwyg' model=model value=description attr='description' }}
+        <hr>
+    {{/if}}
+     <section {{action "toggelEditDescription" on="doubleClick"}}>
+        {{#if description }}
+          {{safe-string description }}
+        {{else}}
+          No content, please insert description
+      {{/if}}
+     </section>
+</div>
+
+
+<div class="scenes">
+    <ul class="nav nav-tabs">
+{{#each scene in scenes }}
+  {{#link-to 'scene.edit' model scene tagName="li" href=false }}
+     <a {{bind-attr href="view.href"}} class='btn btn-default'>
+      {{scene.name}}
+      <i {{action "removeScene" scene bubbles=false }} class=" glyphicon glyphicon-remove remove-scene" aria-hidden="true"></i>
+      </a>
+  {{/link-to}}
+  {{else}}
+  nothing
+  {{/each}}
+  	<li>
+  		<a {{action "addScene"}} class="btn btn-default" title="Add Scene " ><i class=" glyphicon glyphicon-plus "></i></a>
+  	</li>
+</ul>
+</div>

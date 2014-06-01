@@ -1,0 +1,64 @@
+<h2>
+{{#if canEdit}}
+  {{#link-to 'lesson.edit' lesson class="btn btn-default glyphicon glyphicon-log-out refelect" }}
+    {{/link-to}}
+    {{#if editTitle}}
+  {{edit-label class="edit" value=name focus-out="togglEditTitle" insert-newline="togglEditTitle"}}
+{{else}}
+  <span {{action "togglEditTitle" on="doubleClick"}}>{{name}}</span>
+{{/if}}
+    {{else}}
+    {{#link-to 'lesson' lesson class="btn btn-default glyphicon glyphicon-log-out refelect" }}
+    {{/link-to}}
+
+    {{name}}
+{{/if}}
+    
+</h2>
+
+{{#if canEdit}}
+  <button {{action 'toggelEditContent' }} class="btn btn-default pull-right">
+    {{#unless editContent}}
+      Edit
+      {{else}}
+      Save
+    {{/unless}} <i class="glyphicon glyphicon-pencil"></i>
+  </button>
+{{/if}}
+
+{{#if editContent}}
+  <button {{action 'clearContent' }} type="button" class="btn btn-danger pull-left" aria-hidden="true">Clear</button>
+{{/if}}
+
+<div  class="panel panel-info well">
+    {{#if editContent }}
+    <br class="clearfix">
+        {{view 'wysiwyg' model=model value=model.content }}
+        <hr>
+    {{/if}}
+     <section {{action "toggelEditContent" on="doubleClick"}}>
+        {{#if model.content }}
+          {{safe-string model.content }}
+        {{else}}
+          No content, please insert Content
+      {{/if}}
+     </section>
+</div>
+
+<section class="clearfix">
+  {{!-- {{#if interaction}} --}}
+
+  {{#if canEdit}}
+    {{#if interaction }}
+      <button {{action 'removeInteraction' interaction }} type="button" class="btn btn-danger pull-right" aria-hidden="true">Remove &times;</button>
+    {{else}}
+         <a {{action 'addInteraction' }} class="btn btn-default pull-right">Add <i class="glyphicon glyphicon-plus"></i>
+        </a>
+    {{/if}}
+  {{/if}}
+  {{#if interaction }}
+    {{render 'interaction' interaction }}
+  {{/if}}
+  
+  {{!-- {{/if}} --}}
+  </section>

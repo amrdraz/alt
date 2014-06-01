@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    script(src="/javascripts/vendor/jquery.js")
+    script(src="/javascripts/vendor/sass-bootstrap.js")
+    script(src="/javascripts/vendor/handlebars.js")
+    script(src="/javascripts/vendor/ember.min.js")
+    script(src="/javascripts/vendor/ember-data.js")
+    script(src="/javascripts/vendor/ember-simple-auth.js")
+    script(src="/javascripts/vendor/localstorage_adapter.js")
+    script(src="/javascripts/vendor/ember-indexeddb-adapter/lib/indexeddb_migration.js")
+    script(src="/javascripts/vendor/ember-indexeddb-adapter/lib/indexeddb_serializer.js")
+    script(src="/javascripts/vendor/ember-indexeddb-adapter/lib/indexeddb_smartsearch.js")
+    script(src="/javascripts/vendor/ember-indexeddb-adapter/lib/indexeddb_adapter.js")
+    script(src="/javascripts/vendor/sceditor/jquery.sceditor.min.js")
+
+    if(lang==='ar')
+        script(src="/javascripts/ar-application.js")
+    else if (lang==='fr')
+        script(src="/javascripts/fr-application.js")
+    else
+        script(src="/javascripts/application.js")

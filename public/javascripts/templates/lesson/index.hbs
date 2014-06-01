@@ -1,0 +1,16 @@
+
+
+{{#link-to 'lesson.edit' model class="btn btn-default pull-left"}}Edit{{/link-to}}
+<h2><span>{{title}}</span></h2>
+
+<hr>
+
+{{#if description }}
+	<div  class="panel panel-info well">
+      {{safe-string description }}
+	</div>
+{{/if}}
+
+
+<button {{action "start" }} class="btn btn-block btn-lg btn-primary" >Start</button>
+        

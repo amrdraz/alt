@@ -1,0 +1,200 @@
+// Typography
+$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Brand colors
+$brand-primary: #4f8edd;
+$brand-success: #6ECB63;
+$brand-warning: #cba50d;
+$brand-danger: #e72c3c;
+$brand-info: #2bbce1;
+
+// Navbar
+$navbar-height: 40px;
+$navbar-inverse-bg: #313338;
+
+// Buttons
+$btn-font-weight: 600;
+$btn-default-bg: #e6e7e7;
+$btn-default-border: #e6e7e7;
+
+// Alerts and form states
+$state-success-text: #527f26;
+$state-success-bg: #ebf6e1;
+$state-success-border: #b8df92;
+$state-info-text: #157890;
+$state-info-bg: #ddf4fb;
+$state-info-border: #84d8ed;
+$state-warning-text: #917608;
+$state-warning-bg: #fbf3d0;
+$state-warning-border: #f6dc6f;
+$state-danger-text: #a81515;
+$state-danger-bg: #fdf2f2;
+$state-danger-border: #f29797;
+
+// Forms
+
+$border-radius-base:        0px !default;
+$border-radius-large:       0px !default;
+$border-radius-small:       0px !default;
+$input-border-focus: #2598f9;
+
+@import "lib/bootstrap/bootstrap";
+@import "lib/font-awesome/font-awesome";
+@import "lib/bootstrap-social/bootstrap-social";
+
+
+$icon-font-path: "/assets/fonts/bootstrap/" !default;
+
+$brand-primary: #6f5499;
+
+html, body {
+    //font-family: 'Open Sans', sans-serif;
+    height:100%;
+}
+
+h2 {
+  -webkit-margin-before:0;
+}
+
+body {
+  /* font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+  
+  line-height: 1.4em;
+  background: #eaeaea url('/images/bg.png');
+  color: #4d4d4d;
+  /* width: 550px; */
+  /* margin: 0 auto; */
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+
+.main-header {
+  background: $brand-primary;
+  
+  .logo {
+    font-size: 36px;
+    letter-spacing: -0.07em;
+  }
+  a {
+    color: #eee;
+    font-size: 18px;
+    font-weight: bold;
+    &:hover {
+      color: #ddd;
+    }
+  }
+
+  li > a:hover {
+    background-color: darken($brand-primary, 10);
+  }
+
+}
+body > .ember-view {
+    height: 100%;
+}
+.main-container {
+  position: relative;
+  padding-bottom: 60px;
+  min-height: 100%;
+}
+
+.create-btn {
+  font-size: 270px;
+  text-align: center;
+  background: #888;
+  color: #222;
+  cursor: pointer;
+  border:none;
+  width: 100%;
+  height: 315px;
+  margin-bottom: 0;
+  &:empty {
+    width: 100%;
+  }
+  &:hover {
+    text-decoration: none;
+    background: $brand-success;
+    color: #eee;
+  }
+}
+
+
+.lesson-color {
+  height: 200px;
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+
+.footer {
+  position: absolute;
+display: inline-table;
+  vertical-align: center;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  height: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: $brand-primary;
+  line-height: 1em;
+}
+
+
+.drag-select {
+    margin:0 auto;
+    text-align:center;
+    ul {
+    width:100%;
+}
+li {
+    list-style:none;
+    display:inline-block;
+    width:240px;
+    height:260px;
+    /*background:#46f;*/
+    margin-left:100px;
+}
+li:first-child {
+    margin-left:0;
+}
+}
+
+.item-image {
+  width: 100px;
+}
+
+.small-image {
+  height: 60px;
+}
+
+.remove-scene {
+  margin-left: 10px;
+  &:hover {
+    color: $brand-danger;;
+    // background: $brand-danger;
+  }
+}
+
+.refelect {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.choice {
+  text-align: center;
+  font-size: 18px;
+  color: #eee;
+  cursor: pointer;
+}
+
+
+
+

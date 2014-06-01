@@ -1,0 +1,172 @@
+
+{{#if canEdit }}
+  <a {{action 'toggleEdit' }} class="btn btn-default pull-right">
+    {{#if isEditing }}
+      Save 
+    {{else}}
+      Edit 
+    {{/if}}
+    <i class="glyphicon glyphicon-pencil"></i>
+  </a>
+{{/if}}
+{{#if isEditing }}
+  <div  class="panel panel-default">
+    <div class="panel-heading">
+      <label for="">Interaction Type
+      {{view Ember.Select
+             content=model.types
+             value=model.type
+      }}
+      </label>
+    </div>
+  <br>
+  {{#if model.isDrag }}
+    <div class="panel panel-info">
+      <div class="panel-heading">
+       <button {{action "itemAdd" model 'item' }} class="btn btn-info btn-sm pull-right">Add Item</button>
+      <h3 class="panel-title">Items</h3>
+      </div>
+      <ul class="list-group">
+      {{#each item in items}}
+        <li class="list-group-item">
+          <a  {{action "selectImage" item 'image' }} class="btn"><img {{bind-attr src="item.image_src" }}  class="small-image img-responsive"></a>
+          <label class="media-heading">Item Name: {{input value=item.name}}</label>
+          <label for="">Target: {{view Ember.Select
+             content=model.targets
+             optionValuePath="content.id"
+             optionLabelPath="content.name"
+             value=item.value
+      }}</label>
+          {{!-- {{#if item.isDirty}}
+            <button {{action "save" item }} class="btn btn-info pull-right">Save Changes</button>
+          {{/if}} --}}
+          <button {{action "itemRemove" model item 'item' }}  type="button" title="Delete" class="btn btn-info pull-right" aria-hidden="true">Remove &times;</button>
+           
+        </li>
+      {{/each}}
+      </ul>
+    </div>
+
+     <div class="panel panel-success">
+      <div class="panel-heading">
+      <button {{action "itemAdd" model 'target' }} class="btn btn-default btn-sm pull-right">Add Target</button>
+      <h3 class="panel-title">Targets</h3>
+      </div>
+      <ul class="list-group">
+      {{#each target in targets}}
+        <li class="list-group-item">
+          <a {{action "selectImage" target 'image' }}  class="btn"><img {{bind-attr src="target.image_src" }}  class="img-responsive small-image"></a>
+          |
+          <a {{action "selectImage" target 'hover' }}  class="btn"><img {{bind-attr src="target.hover_src" }}  class="img-responsive small-image"></a>
+          <label class="media-heading">Item Name: {{input value=target.name}}</label>
+          {{log target.nextScene}}
+          <label for="">Next Scene ({{target.nextScene.name}}) : {{view Ember.Select
+             content=scenes
+             optionValuePath="content"
+             optionLabelPath="content.name"
+             prompt="select scene"
+             selection=target.nextScene
+             value=target.nextScene
+             }}
+
+          </label>
+          {{!-- {{#if target.isDirty}}
+            <button {{action "save" target }} class="btn btn-info pull-right">Save Changes</button>
+          {{/if}} --}}
+           <button {{action "itemRemove" model target 'target' }} type="button" title="Delete" class="btn btn-info pull-right" aria-hidden="true">Remove &times;</button>
+           
+        </li>
+      {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+  {{#if model.isChoose }}
+     <div class="panel panel-success">
+      <div class="panel-heading">
+      <button {{action "itemAdd" model 'target' }} class="btn btn-default btn-sm pull-right">Add Choice</button>
+      <h3 class="panel-title">Choices</h3>
+      </div>
+      <ul class="list-group">
+      {{#each target in targets}}
+        <li class="list-group-item">
+           <div style="background:{{unbound target.color}}" class="choice">
+             {{target.name}}
+           </div>
+          <label class="media-heading">Choice: {{input value=target.name}}</label>
+          {{log target.nextScene}}
+          <label for="">Next Scene ({{target.nextScene.name}}) : {{view Ember.Select
+             content=scenes
+             optionValuePath="content"
+             optionLabelPath="content.name"
+             prompt="select scene"
+             selection=target.nextScene
+             value=target.nextScene
+             }}
+
+          </label>
+          {{!-- {{#if target.isDirty}}
+            <button {{action "save" target }} class="btn btn-info pull-right">Save Changes</button>
+          {{/if}} --}}
+           <button {{action "itemRemove" model target 'target' }} type="button" title="Delete" class="btn btn-info pull-right" aria-hidden="true">Remove &times;</button>
+           
+        </li>
+      {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+
+  {{#if model.isContinue }}
+    <div class="panel-body">
+      {{view Ember.Select
+             content=scenes
+             optionLabelPath="content.name"
+             selected=selectedNextScene
+             value=selectedNextScene
+             prompt="Please select the next scene"
+             class="form-control input-lg"
+      }}
+    </div>
+  {{/if}}
+  </div>
+{{else}}
+
+  {{#if model.isDrag }}
+    <div class="drag-select">
+        <ul class="dragable-area list-unstyled">
+        {{#each model.items}}
+          {{#view App.ItemView value=value model=this}}
+            <img {{bind-attr src='image_src'}} class="img-responsive" />
+          {{/view}}
+        {{else}}
+          No Items to Drag
+        {{/each}}
+        </ul>
+        <ul class="targets-area list-unstyled" >
+        {{#each model.targets}}
+          {{#view App.TargetView value=value model=this }}
+            <img {{bind-attr src='image_src' data-src='image_src' data-hover='hover_src' }} draggable="false" class="drag-target img-responsive" />
+          {{/view}}
+        {{else}}
+          No Targets
+        {{/each}}
+        </ul>
+    </div>
+  {{/if}}
+
+  {{#if model.isChoose }}
+  <hr>
+    <div class="row clearfix">
+      {{#each target in model.targets}}
+      <div class="col-sm-12 col-md-6">
+      <div {{action "next" target }} class="choice thumbnail" style="background:{{unbound target.color}}" >{{target.name}} </div> 
+      </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if model.isContinue }}
+  <button {{action "next" model }} class="btn btn-block btn-lg btn-primary">Continue to {{nextScene.name}} </button>
+    
+  {{/if}}
+  
+{{/if}}

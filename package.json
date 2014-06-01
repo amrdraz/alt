@@ -1,0 +1,44 @@
+{
+  "name": "abkar",
+  "version": "0.0.1",
+  "description": "abkar learning tool",
+  "keywords": [
+    "scaffold",
+    "generator",
+    "framework",
+    "boilerplate",
+    "ember-tools",
+    "mongoose",
+    "bootstrap",
+    "skeleton",
+    "express",
+    "mongodb",
+    "crud",
+    "sass",
+    "scss",
+    "rest",
+    "ember",
+    "mvc"
+  ],
+  "homepage": "https://bitbucket.org/draz/alt",
+  "bugs": "https://bitbucket.org/draz/alt/issues",
+  "author": "Amr Draz",
+  "repository": {
+    "type": "git",
+    "url": "git://draz@bitbucket.org/draz/alt.git"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.2.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0",
+    "node-sass": "~0.8.0"
+  }
+}

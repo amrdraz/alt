@@ -1,0 +1,43 @@
+
+<div class="main-container"><header class="navbar navbar-static-top bs-docs-nav main-header" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a href="../" class="navbar-brand logo">abkar</a>
+      
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      
+      <ul class="nav navbar-nav navbar-right">
+        {{#link-to 'lessons' tagName="li" href=false }}
+           <a {{bind-attr href="view.href"}} class="btn">
+            Lessons
+            </a>
+        {{/link-to}}
+        {{#link-to 'dashboard' tagName="li" href=false }}
+           <a {{bind-attr href="view.href"}} class="btn" >
+            Dashboard
+            </a>
+        {{/link-to}}
+        <li>
+          <a id="feedbackForm" href="https://docs.google.com/forms/d/1mZt4gf-lh-C1TrthBNI5KaL4chTsrcAJtWDv4aeW0fg/viewform" class="btn">Feedback</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+  <main class="container-fluid">
+  {{outlet}}  
+  </main>
+  
+  
+  <footer class="footer" >
+    <p>copyright © abkar 2014</p>
+  </footer>
+  </div>

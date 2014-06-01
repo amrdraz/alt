@@ -1,0 +1,26 @@
+{
+  "name": "ember-indexeddb-adapter",
+  "dependencies": {
+    "ember": "~1.0.0-rc.6",
+    "ember-data-shim": "~0.0.13"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/chlu/ember-indexeddb-adapter",
+  "_release": "d197172c2f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d197172c2f934f5bf209b8cd9d187d1a93f46bc2"
+  },
+  "_source": "git://github.com/chlu/ember-indexeddb-adapter.git",
+  "_target": "*",
+  "_originalSource": "ember-indexeddb-adapter",
+  "_direct": true
+}

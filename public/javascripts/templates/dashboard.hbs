@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-lg-3">
+  <a {{action "createLesson"}} class="thumbnail glyphicon glyphicon-plus create-btn"></a>
+  &nbsp;
+    {{!-- {{link-to 'lesson/create' }}class{{/link-to}} --}}
+  </div>
+{{#each model }}
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="thumbnail">
+      <div style="background:{{unbound color}}" class="lesson-color"></div>
+      <div class="caption">
+        <h3>{{title}}</h3>
+        <p>
+        {{#link-to "lesson" this class="btn btn-primary" role="button" }}Preview{{/link-to}}
+        {{#link-to "lesson.edit" this class="btn btn-default" role="button" }}Edit{{/link-to}}
+        <button {{action "remove" this }} class="btn btn-danger">Remove</button>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
